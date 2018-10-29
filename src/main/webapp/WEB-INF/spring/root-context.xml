@@ -6,9 +6,9 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://itkey.asuscomm.com:3306/education?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true" />
+		<property name="url" value="jdbc:mysql://itkey.asuscomm.com:3306/education?useUnicode=true&amp;characterEncoding=utf-8" />
 		<property name="username" value="education" />
-		<property name="password" value="educatoin" />
+		<property name="password" value="education" />
 		<property name="validationQuery" value="select 1" />
 		<property name="testOnBorrow" value="true" />
 	</bean>	
