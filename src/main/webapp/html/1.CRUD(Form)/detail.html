@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    
+    .input-area{
+        border : 1px solid #417CB7;
+        border-radius: 5px;
+        min-height: 35px;
+    }
+    .contents-area{
+        min-height: 400px;
+    }
+    </style>
+    <body>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>게시글 상세</h1> 
+    <p>현재 화면은 Form 전송 코딩교육을 위한 화면입니다.</p> 
+  </div>
+  <form>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="form-group">
+                <label for="usr">제목:</label>
+                <p class="input-area"></p>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="usr">작성자:</label>
+                <p class="input-area"></p>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="pwd">내용:</label>
+      <p class="input-area contents-area"></p>
+    </div>
+    <div class="row text-center">
+        <div class="col-sm-12 text-right">
+          <button type="button" style="width:15%;" class="btn btn-lg btn-default pull-left">목록으로</button>
+          <button type="button" style="width:15%; margin-left: 10px;" class="btn btn-lg btn-danger pull-right">삭 제</button>
+          <button type="button" style="width:15%;" class="btn btn-lg btn-warning pull-right">수 정</button>
+        </div>
+    </div>
+  </form>
+</div>
+</body>
+</html>

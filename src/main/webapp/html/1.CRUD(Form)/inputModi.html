@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+    .upload-col{
+        border : 1px solid #CCCCCC;
+        width : 100%;
+        height: 50px;
+        margin-bottom: 20px;
+        padding-top: 12px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 5px;
+    }
+    .upload-col > input{
+        width: 100%;
+    }
+    </style>
+    </head>
+
+    
+    <body>
+<div class="container">
+  <div class="jumbotron">
+    <h1>게시글 추가 및 수정 화면</h1> 
+    <p>1. 현재 화면은 Form 전송 코딩교육을 위한 화면입니다.</p> 
+    <p>2. 로그인 기능 추가 후 작성자에는 현재 로그인 되어있는 먼저 입력되어있어야 합니다.</p> 
+  </div>
+  <form>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="form-group">
+                <label for="usr">제목:</label>
+                <input type="text" class="form-control" id="title">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="usr">작성자:</label>
+                <input type="text" class="form-control" id="writer">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="pwd">내용:</label>
+      <textarea class="form-control" style="resize: none;" rows="20" id="contents"></textarea>
+    </div>
+      <div class="row">
+         <div class="col-sm-12">
+             <div class="upload-col">
+                <div class="col-sm-8"><input type="file" name="fileupload" value="fileupload" id="fileupload"></div>
+                <div class="col-sm-4" style="padding: 2px; color: #A3A3A3;"><span>업로드된 파일 : </span><span style="font-weight: bold;">없음</span></div>
+             </div>
+        </div>
+      </div>
+    <div class="row text-center">
+      <div class="col-sm-12">
+      <button type="button" style="width:15%;" class="btn btn-lg btn-default pull-left">목록으로</button>
+      <button type="button" style="width:15%;" class="btn btn-lg btn-success pull-right">저 장</button>
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+</html>
