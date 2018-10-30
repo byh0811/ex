@@ -15,6 +15,7 @@ public class BoardController {
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public ModelAndView sampleList() {
 		ModelAndView mv = new ModelAndView("/board");
-		return null;
+		mv.addObject("map",bService.boardList());
+		return mv;
 	}
 }
