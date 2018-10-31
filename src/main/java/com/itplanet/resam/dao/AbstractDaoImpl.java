@@ -2,9 +2,7 @@ package com.itplanet.resam.dao;
 
 import org.mybatis.spring.*;
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.stereotype.*;
 
-@Repository
 public class AbstractDaoImpl implements AbstractDao{
 	@Autowired
 	private SqlSessionTemplate tpl;
@@ -28,6 +26,10 @@ public class AbstractDaoImpl implements AbstractDao{
 
 	public int delete(String queryId, Object object) {
 		return tpl.delete(queryId, object);
+	}
+
+	public Object list(String queryId) {
+		return null;
 	}
 
 }

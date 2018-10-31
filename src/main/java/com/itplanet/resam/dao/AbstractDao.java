@@ -18,6 +18,13 @@ public interface AbstractDao {
 	public Object list(String queryId, Object object);
 	
 	/**
+	 * db selectList
+	 * @param queryId
+	 * @return
+	 */
+	public Object list(String queryId);
+	
+	/**
 	 * db insert
 	 * @param queryId
 	 * @param object

@@ -4,12 +4,16 @@ import lombok.*;
 
 @Data
 public class SampleBoard {
-	private String boardIdx;
-	private String boardWriter;
-	private String boardTitle;
-	private String boardContents;
-	private String boardParent;
-	private String boardSeq;
-	private String boardViewCount;
-	private String fileIdx;
+	private String boardIdx			= null;
+	private String boardWriter		= null;
+	private String boardTitle		= null;
+	private String boardContents	= null;
+	private String boardParent		= null;
+	private String boardSeq			= null;
+	private String boardViewCount	= null;
+	private String fileIdx			= null;
+	
+	private int offset				= 0;
+	private int row					= 0;
+	private int sortNumber			= 0;
 }
