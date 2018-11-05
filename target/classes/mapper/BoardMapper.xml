@@ -1,27 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sampldBoard">
-	<select id="selectBoard" parameterType="sampleBoard" resultType="sampleBoard">
-		select board_idx, board_writer, board_title, board_contents, board_parent,
+	<select id="selectBoard" parameterType="sampleBoard"
+		resultType="sampleBoard">
+		select board_idx, board_writer, board_title, board_contents,
+		board_parent,
 		board_seq, board_view_count, file_idx
 		from sample_board_tb
 		<where>
-			<if test="boardIdx!=null 		and boardIdx!=''"		><![CDATA[ and board_idx=#{boardIdx} 				]]></if>
-			<if test="boardWriter!=null 	and boardWriter!=''"	><![CDATA[ and board_writer=#{boardWriter} 			]]></if>
-			<if test="boardTitle!=null 		and boardTitle!=''"		><![CDATA[ and board_title=#{boardTitle} 			]]></if>
-			<if test="boardContents!=null 	and boardContents!=''"	><![CDATA[ and board_contents=#{boardContents} 		]]></if>
-			<if test="boardParent!=null 	and boardParent!=''"	><![CDATA[ and board_parent=#{boardParent} 			]]></if>
-			<if test="boardSeq!=null 		and boardSeq!=''"		><![CDATA[ and board_seq=#{boardSeq} 				]]></if>
-			<if test="boardViewCount!=null 	and boardViewCount!=''"	><![CDATA[ and board_view_count=#{boardViewCount} 	]]></if>
-			<if test="fileIdx!=null 		and fileIdx!=''"		><![CDATA[ and file_idx=#{fileIdx} 					]]></if>
+			<if test="boardIdx!=null 		and boardIdx!=''"><![CDATA[ and board_idx=#{boardIdx} 				]]></if>
+			<if test="boardWriter!=null 	and boardWriter!=''"><![CDATA[ and board_writer=#{boardWriter} 			]]></if>
+			<if test="boardTitle!=null 		and boardTitle!=''"><![CDATA[ and board_title=#{boardTitle} 			]]></if>
+			<if test="boardContents!=null 	and boardContents!=''"><![CDATA[ and board_contents=#{boardContents} 		]]></if>
+			<if test="boardParent!=null 	and boardParent!=''"><![CDATA[ and board_parent=#{boardParent} 			]]></if>
+			<if test="boardSeq!=null 		and boardSeq!=''"><![CDATA[ and board_seq=#{boardSeq} 				]]></if>
+			<if test="boardViewCount!=null 	and boardViewCount!=''"><![CDATA[ and board_view_count=#{boardViewCount} 	]]></if>
+			<if test="fileIdx!=null 		and fileIdx!=''"><![CDATA[ and file_idx=#{fileIdx} 					]]></if>
 		</where>
 		<if test="sortNumber==0"> order by board_idx desc </if>
 		<if test="offset!=0"> limit #{offset}, #{row} </if>
 	</select>
-	
+
 	<insert id="insertBoard" parameterType="sampleBoard">
 		insert into sample_board_tb(
-		<if test=""></if>
+		<trim prefixOverrides=",">
+		<if test="boardIdx!=null 		and boardIdx!=''"		>, board_idx		</if>
+		<if test="boardWriter!=null 	and boardWriter!=''"	>, board_writer		</if>
+		<if test="boardTitle!=null 		and boardTitle!=''"		>, board_title		</if>
+		<if test="boardContents!=null 	and boardContents!=''"	>, board_contents	</if>
+		<if test="boardParent!=null 	and boardParent!=''"	>, board_parent		</if>
+		<if test="boardSeq!=null 		and boardSeq!=''"		>, board_seq		</if>
+		<if test="boardViewCount!=null 	and boardViewCount!=''"	>, board_view_count	</if>
+		<if test="fileIdx!=null 		and fileIdx!=''"		>, file_idx			</if>
+		</trim>
+		) values(
+		<trim prefixOverrides=",">
+		<if test="boardIdx!=null 		and boardIdx!=''"		>, #{boardIdx}		</if>
+		<if test="boardWriter!=null 	and boardWriter!=''"	>, #{boardWriter}	</if>
+		<if test="boardTitle!=null 		and boardTitle!=''"		>, #{boardtitle}	</if>
+		<if test="boardContents!=null 	and boardContents!=''"	>, #{boardContents}	</if>
+		<if test="boardParent!=null 	and boardParent!=''"	>, #{boardParent}	</if>
+		<if test="boardSeq!=null 		and boardSeq!=''"		>, #{boardSeq}		</if>
+		<if test="boardViewCount!=null 	and boardViewCount!=''"	>, #{boardViewCount}</if>
+		<if test="fileIdx!=null 		and fileIdx!=''"		>, #{fileIdx}		</if>
+		</trim>
 		)
+		<selectKey keyProperty="boardIdx" resultType="String" order="AFTER"><![CDATA[select last_insert_id()]]></selectKey>
 	</insert>
+	
+	<update id="updateBoard" parameterType="sampleBoard">
+		update sample_board_tb
+		<trim prefix="set" prefixOverrides=",">
+		<if test="boardWriter!=null 	and boardWriter!=''"	>, board_writer=#{boardWriter}			</if>
+		<if test="boardTitle!=null 		and boardTitle!=''"		>, board_title=#{boardTitle}			</if>
+		<if test="boardContents!=null	and boardContents!=''"	>, board_contents#{boardContents}		</if>
+		<if test="boardParent!=null 	and boardParent!=''"	>, board_parent=#{boardParent}			</if>
+		<if test="boardSeq!=null 		and boardSeq!=''"		>, board_seq=#{boardSeq}				</if>
+		<if test="boardViewCount!=null 	and boardViewCount!=''"	>, board_view_count=#{boardViewCount}	</if>
+		</trim>
+		where board_idx = #{boardIdx}
+	</update>
 </mapper>
