@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sampldBoard">
-
+	<select id="selectBoard" parameterType="sampleBoard" resultType="sampleBoard">
+		select board_idx, board_writer, board_title, board_contents, board_parent,
+		board_seq, board_view_count, file_idx
+		from sample_board_tb
+		<where>
+			<if test="boardIdx!=null 		and boardIdx!=''"		><![CDATA[ and board_idx=#{boardIdx} 				]]></if>
+			<if test="boardWriter!=null 	and boardWriter!=''"	><![CDATA[ and board_writer=#{boardWriter} 			]]></if>
+			<if test="boardTitle!=null 		and boardTitle!=''"		><![CDATA[ and board_title=#{boardTitle} 			]]></if>
+			<if test="boardContents!=null 	and boardContents!=''"	><![CDATA[ and board_contents=#{boardContents} 		]]></if>
+			<if test="boardParent!=null 	and boardParent!=''"	><![CDATA[ and board_parent=#{boardParent} 			]]></if>
+			<if test="boardSeq!=null 		and boardSeq!=''"		><![CDATA[ and board_seq=#{boardSeq} 				]]></if>
+			<if test="boardViewCount!=null 	and boardViewCount!=''"	><![CDATA[ and board_view_count=#{boardViewCount} 	]]></if>
+			<if test="fileIdx!=null 		and fileIdx!=''"		><![CDATA[ and file_idx=#{fileIdx} 					]]></if>
+		</where>
+		<if test="sortNumber==0"> order by board_idx desc </if>
+		<if test="offset!=0"> limit #{offset}, #{row} </if>
+	</select>
+	
+	<insert id="insertBoard" parameterType="sampleBoard">
+		insert into sample_board_tb(
+		<if test=""></if>
+		)
+	</insert>
 </mapper>
