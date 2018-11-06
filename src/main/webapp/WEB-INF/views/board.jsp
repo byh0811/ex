@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +11,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script>
 	$(function(){
-		
+		var $map = ${map}
 	});
 	</script>
 </head>
@@ -29,7 +31,7 @@
 				<th>제목</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody >
 			
 		</tbody>
 	</table>

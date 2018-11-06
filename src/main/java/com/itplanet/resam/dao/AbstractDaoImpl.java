@@ -1,9 +1,13 @@
 package com.itplanet.resam.dao;
 
+import java.util.*;
+
+import org.apache.log4j.*;
 import org.mybatis.spring.*;
 import org.springframework.beans.factory.annotation.*;
 
 public class AbstractDaoImpl implements AbstractDao{
+	private Logger logger = Logger.getLogger(this.getClass());
 	@Autowired
 	private SqlSessionTemplate tpl;
 
@@ -11,7 +15,13 @@ public class AbstractDaoImpl implements AbstractDao{
 		return tpl.selectOne(queryId, object);
 	}
 
-	public Object list(String queryId, Object object) {
+	public List<?> list(String queryId, Object object) {
+		if (logger.isDebugEnabled()) {
+			logger.debug(new Exception().getStackTrace()[0].getMethodName()
+					+ "() QueryId:" + queryId
+					+ " Pararm:" + object.toString()
+					);
+		}
 		if(object==null) return tpl.selectList(queryId);
 		return tpl.selectList(queryId, object);
 	}
@@ -28,8 +38,8 @@ public class AbstractDaoImpl implements AbstractDao{
 		return tpl.delete(queryId, object);
 	}
 
-	public Object list(String queryId) {
-		return null;
+	public List<?> list(String queryId) {
+		return tpl.selectList(queryId);
 	}
 
 }

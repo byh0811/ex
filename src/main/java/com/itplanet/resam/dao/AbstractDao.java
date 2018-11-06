@@ -1,5 +1,7 @@
 package com.itplanet.resam.dao;
 
+import java.util.*;
+
 public interface AbstractDao {
 	/**
 	 * db select
@@ -15,14 +17,14 @@ public interface AbstractDao {
 	 * @param object
 	 * @return
 	 */
-	public Object list(String queryId, Object object);
+	public List<?> list(String queryId, Object object);
 	
 	/**
 	 * db selectList
 	 * @param queryId
 	 * @return
 	 */
-	public Object list(String queryId);
+	public List<?> list(String queryId);
 	
 	/**
 	 * db insert

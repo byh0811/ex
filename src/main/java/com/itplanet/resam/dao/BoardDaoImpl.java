@@ -2,13 +2,17 @@ package com.itplanet.resam.dao;
 
 import java.util.*;
 
+import org.springframework.stereotype.*;
+
 import com.itplanet.resam.dto.*;
 
+@Repository
 public class BoardDaoImpl extends AbstractDaoImpl implements BoardDao{
 
-	@SuppressWarnings("unchecked")
 	public List<SampleBoard> listBoard(SampleBoard sBoard) {
-		return (List<SampleBoard>) list("selectBoard", sBoard);
+		List<SampleBoard> out = (List<SampleBoard>) list("selectBoard", sBoard);
+		System.out.println(out);
+		return out;
 	}
 
 	public SampleBoard getBoard(SampleBoard sBoard) {

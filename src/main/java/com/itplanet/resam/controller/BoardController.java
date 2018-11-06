@@ -6,6 +6,7 @@ import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
+import com.google.gson.*;
 import com.itplanet.resam.dto.*;
 import com.itplanet.resam.service.*;
 
@@ -15,11 +16,13 @@ import lombok.Builder.*;
 public class BoardController {
 	@Autowired
 	private BoardService bService;
+	@Autowired
+	private Gson gson;
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public ModelAndView sampleList(SampleBoard sb, @RequestParam(defaultValue="1") int page) {
 		ModelAndView mv = new ModelAndView("/board");
-		mv.addObject("map",bService.boardList(sb));
+		mv.addObject("map",gson.toJson(bService.boardList(sb)));
 		return mv;
 	}
 	
